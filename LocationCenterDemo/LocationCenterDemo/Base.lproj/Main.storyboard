@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXX-dD-Itm">
+                                <rect key="frame" x="26" y="40" width="548" height="486"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPT-n1-Eeh">
+                                <rect key="frame" x="26" y="546" width="134" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Find my location">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="findMeButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="z0O-hd-G0m"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4rF-Gv-2Tf">
+                                <rect key="frame" x="180" y="544" width="37" height="37"/>
+                                <color key="color" red="0.037300273776054382" green="0.037299159914255142" blue="0.037299789488315582" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LPT-n1-Eeh" firstAttribute="leading" secondItem="pXX-dD-Itm" secondAttribute="leading" id="3T5-Rr-Jh6"/>
+                            <constraint firstItem="pXX-dD-Itm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="5Js-8d-T93"/>
+                            <constraint firstItem="4rF-Gv-2Tf" firstAttribute="centerY" secondItem="LPT-n1-Eeh" secondAttribute="centerY" constant="-0.5" id="64Y-m6-rIs"/>
+                            <constraint firstItem="pXX-dD-Itm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="Nzr-qY-b37"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pXX-dD-Itm" secondAttribute="trailing" constant="10" id="YRe-v3-Zxh"/>
+                            <constraint firstItem="4rF-Gv-2Tf" firstAttribute="leading" secondItem="LPT-n1-Eeh" secondAttribute="trailing" constant="20" id="pm1-92-pWk"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="LPT-n1-Eeh" secondAttribute="bottom" constant="20" id="qzc-yd-KyH"/>
+                            <constraint firstItem="LPT-n1-Eeh" firstAttribute="top" secondItem="pXX-dD-Itm" secondAttribute="bottom" constant="20" id="sy3-wv-6IG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="findMeButton" destination="LPT-n1-Eeh" id="WKR-Nb-Jsr"/>
+                        <outlet property="spinner" destination="4rF-Gv-2Tf" id="kts-29-0N3"/>
+                        <outlet property="textView" destination="pXX-dD-Itm" id="BRb-sw-Qyp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
