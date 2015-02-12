@@ -55,6 +55,26 @@
     return _sharedObject;
 }
 
++ (void)determineAuthorizationStatusWithBlock:(AuthorizationStatusBlock)block {
+    CLAuthorizationStatus initialStatus = CLLocationManager.authorizationStatus;
+    if (initialStatus == kCLAuthorizationStatusNotDetermined) {
+        DSLocationRequest *request = [DSLocationRequest request];
+        request.timeOut = DBL_MAX;
+        request.timeRelevance  = DBL_MAX;
+        [request setNewBestLocationBlock:^(CLLocation *newBestLocation, BOOL *finish) {
+            *finish = YES;
+        }];
+        [request setFinishBlock:^(DSLRFinishStatus finishStatus, NSError *error) {
+            CLAuthorizationStatus resolvedStatus = CLLocationManager.authorizationStatus;
+            NSAssert(resolvedStatus != kCLAuthorizationStatusNotDetermined, @"We must end up with resolved status");
+            block(resolvedStatus);
+        }];
+        [[self sharedLocationCenter] processRequest:request];
+    } else {
+        block(initialStatus);
+    }
+}
+
 - (instancetype)init {
     if (self = [super init]) {
         _statusBeforeAskingPermission = UNSET_AUTH_STATUS;

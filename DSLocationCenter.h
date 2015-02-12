@@ -77,12 +77,19 @@ typedef void(^geoCodingBlock)(CLLocation *location);
 - (void)cancel;
 @end
 
+
+typedef void(^AuthorizationStatusBlock)(CLAuthorizationStatus status);
+
 /** Class that provides simplified interface for CLLocationManger
  *  @warning you must provide NSLocationWhenInUseUsageDescription key in info.plist for iOS 8
  */
 @interface DSLocationCenter : NSObject
 /** Returnes location center singleton */
 + (id)sharedLocationCenter;
+
+/** Returns current authorization status if user is already determinded privacy settings for app, 
+ *  otherwise it asks user to grant permission and calls the block when user makes his choice */
++ (void)determineAuthorizationStatusWithBlock:(AuthorizationStatusBlock)block;
 
 /** Add process to "queue" of positioning porcess */
 - (void)processRequest:(DSLocationRequest *)request;
